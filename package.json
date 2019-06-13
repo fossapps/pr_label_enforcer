@@ -1,20 +1,28 @@
 {
-  "name": "@crazy-factory/ts-module-boilerplate",
-  "description": "",
+  "name": "enforce_label_pull",
+  "description": "A github app to enforce labels on pull request",
   "main": "./lib/index.js",
   "typings": "./lib/index",
   "module": "./lib.es2015/index.js",
   "jsnext:main": "./lib.es2015/index.js",
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "probot",
+    "github",
+    "pull requests",
+    "enforce labels on pull requests"
+  ],
+  "author": "Nishchal Gautam <gautam.nishchal@gmail.com>",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/crazyfactory/ts-module-boilerplate.git"
+    "url": ""
   },
-  "homepage": "https://github.com/crazyfactory/ts-module-boilerplate",
-  "dependencies": {},
+  "homepage": "",
+  "dependencies": {
+    "probot": "^9.2.15"
+  },
   "devDependencies": {
+    "@octokit/webhooks": "^6.2.2",
     "@types/jest": "^23.3.7",
     "@types/node": "^10.12.0",
     "del-cli": "^1.0.0",
@@ -30,16 +38,18 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
+    "start": "probot run lib/index.js",
     "test": "jest",
     "test:no-cache": "jest --no-cache",
     "test:watch": "jest --watch",
-    "build": "npm run clean && tsc -p . && tsc -p tsconfig.es2015.json && webpack",
+    "build": "npm run clean && tsc -p tsconfig.json",
     "clean": "del-cli ./lib ./lib.es2015 ./coverage ./umd/**/*.js",
     "lint": "tslint -t stylish --project tsconfig.json './src/**/*.ts'",
     "lint:fix": "npm run lint -s -- --fix",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "jest": {
+    "testEnvironment": "node",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },

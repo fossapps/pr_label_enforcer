@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
+    "allowJs": false,
+    "strict": true,
     "target": "ES5",
-    "module": "es6",
+    "module": "commonjs",
     "esModuleInterop": true,
-    "lib": ["es5", "scripthost", "dom", "es6"],
+    "lib": ["es2015", "es2017"],
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
+    "skipLibCheck": true,
     "declaration": true,
     "moduleResolution": "node",
     "outDir": "./lib",
@@ -16,6 +19,8 @@
     "preserveConstEnums": true
   },
   "include": [
-    "src/**/*"
-  ]
+    "src/**/*",
+    "types/promise-events.d.ts"
+  ],
+  "exclude": ["./node_modules"]
 }
