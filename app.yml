@@ -24,7 +24,7 @@ default_events:
 # - gollum
 # - issue_comment
 - issues
-# - label
+- label
 # - milestone
 # - member
 # - membership
@@ -35,7 +35,7 @@ default_events:
 # - project_card
 # - project_column
 # - public
-- pull_request
+# - pull_request
 # - pull_request_review
 # - pull_request_review_comment
 # - push
@@ -126,7 +126,7 @@ default_permissions:
 
 
 # The name of the GitHub App. Defaults to the name specified in package.json
-# name: My Probot App
+name: "Pull Request Label Enforcer"
 
 # The homepage of your GitHub App.
 # url: https://example.com/
