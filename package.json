@@ -1,5 +1,5 @@
 {
-  "name": "enforce_label_pull",
+  "name": "pull_request_label_enforcer",
   "description": "A github app to enforce labels on pull request",
   "main": "./lib/index.js",
   "typings": "./lib/index",
@@ -15,9 +15,9 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:fossapps/pr_label_enforcer.git"
   },
-  "homepage": "",
+  "homepage": "https://cyberhck.serveo.net/",
   "dependencies": {
     "probot": "^9.2.15"
   },
@@ -38,7 +38,7 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "start": "probot run lib/index.js",
+    "start": "probot run ./lib/index.js",
     "test": "jest",
     "test:no-cache": "jest --no-cache",
     "test:watch": "jest --watch",
