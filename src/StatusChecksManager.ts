@@ -23,7 +23,7 @@ export class StatusChecksManager {
         if (check.conclusion === "success") {
             return CheckStatus.SUCCESS;
         }
-        if (check.conclusion === "neutral") {
+        if (check.status === "in_progress") {
             return CheckStatus.PENDING;
         }
         if (check.conclusion === "failure") {
