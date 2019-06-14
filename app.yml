@@ -13,7 +13,7 @@
 # The list of events the GitHub App subscribes to.
 # Uncomment the event names below to enable them.
 default_events:
-# - check_run
+- check_run
 # - check_suite
 # - commit_comment
 # - create
@@ -35,7 +35,7 @@ default_events:
 # - project_card
 # - project_column
 # - public
-# - pull_request
+- pull_request
 # - pull_request_review
 # - pull_request_review_comment
 # - push
@@ -58,7 +58,7 @@ default_permissions:
 
   # Checks on code.
   # https://developer.github.com/v3/apps/permissions/#permission-on-checks
-  # checks: read
+  checks: write
 
   # Repository contents, commits, branches, downloads, releases, and merges.
   # https://developer.github.com/v3/apps/permissions/#permission-on-contents
@@ -82,7 +82,7 @@ default_permissions:
 
   # Pull requests and related comments, assignees, labels, milestones, and merges.
   # https://developer.github.com/v3/apps/permissions/#permission-on-pull-requests
-  # pull_requests: read
+  pull_requests: write
 
   # Manage the post-receive hooks for a repository.
   # https://developer.github.com/v3/apps/permissions/#permission-on-repository-hooks
