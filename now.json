@@ -1,4 +1,5 @@
 {
+  "version": "2",
   "name": "pr_label_enforcer",
   "alias": "Pull Request Label Enforcer",
   "scale": {
@@ -23,6 +24,7 @@
     "APP_NAME": "WIP",
     "DISABLE_STATS": "true",
     "LOG_LEVEL": "info",
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "PRIVATE_KEY": "@private_key"
   }
 }
