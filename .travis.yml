@@ -23,3 +23,6 @@ after_script: greenkeeper-lockfile-upload
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   #- npm run semantic-release
+deploy:
+  provider: script
+  script: "./scripts/deploy.sh"
