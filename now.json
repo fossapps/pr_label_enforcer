@@ -21,6 +21,8 @@
   ],
   "env": {
     "APP_ID": "32985",
+    "CLIENT_SECRET": "@client_secret",
+    "WEBHOOK_SECRET": "@webhook_secret",
     "APP_NAME": "WIP",
     "DISABLE_STATS": "true",
     "LOG_LEVEL": "info",
