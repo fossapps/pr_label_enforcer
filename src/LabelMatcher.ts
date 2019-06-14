@@ -46,16 +46,16 @@ export class LabelMatcher {
 
     public matches(config: IGithubConfig): boolean {
         return Object.keys(config.labelRule).every((x) => {
-            if (x === "endsWith") {
-                return this.endsWith(config.labelRule as ILabelEndsWithRule);
+            switch (x) {
+                case "endsWith":
+                    return this.endsWith(config.labelRule as ILabelEndsWithRule);
+                case "startsWith":
+                    return this.startsWith(config.labelRule as ILabelStartsWithRule);
+                case "values":
+                    return this.contains(config.labelRule as ILabelEqualsRule);
+                default:
+                    throw new Error(`rule ${x} not supported`);
             }
-            if (x === "startsWith") {
-                return this.startsWith(config.labelRule as ILabelStartsWithRule);
-            }
-            if (x === "values") {
-                return this.contains(config.labelRule as ILabelEqualsRule);
-            }
-            throw new Error(`rule ${x} not supported`);
         });
     }
 }
