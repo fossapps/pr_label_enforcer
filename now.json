@@ -4,8 +4,14 @@
   "alias": "ple",
   "builds": [
     {
+      "src": "now.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
       "src": "/",
-      "use": "@now/node-server ./node_modules/.bin/probot run ./lib/index.js"
+      "dest": "/now.js"
     }
   ],
   "env": {
