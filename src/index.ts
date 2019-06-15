@@ -1,5 +1,5 @@
 import * as Webhooks from "@octokit/webhooks";
-import {Application, Probot} from "probot";
+import {Application} from "probot";
 import {OnCallback} from "probot/lib/application";
 import {Config} from "./Config";
 import {IGithubConfig, LabelMatcher} from "./LabelMatcher";
@@ -49,4 +49,6 @@ const handler = (context: Application) => {
     context.on("pull_request.unlabeled", handleStatus);
     context.on("pull_request.labeled", handleStatus);
 };
-Probot.run(handler);
+
+// tslint:disable-next-line:no-default-export export-name
+export = handler;

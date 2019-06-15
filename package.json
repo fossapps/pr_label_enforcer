@@ -38,7 +38,7 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "start": "node ./lib/index.js",
+    "start": "probot run ./lib/index.js",
     "test": "jest",
     "test:no-cache": "jest --no-cache",
     "test:watch": "jest --watch",
