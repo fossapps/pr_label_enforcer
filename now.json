@@ -1,7 +1,12 @@
 {
   "version": 2,
   "name": "pr_label_enforcer",
-  "alias": "Pull Request Label Enforcer",
+  "alias": "ple",
+  "builds": [
+    {
+      "src": "npm start"
+    }
+  ],
   "env": {
     "APP_ID": "32985",
     "CLIENT_SECRET": "@client_secret",
