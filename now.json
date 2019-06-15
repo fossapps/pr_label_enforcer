@@ -4,8 +4,8 @@
   "alias": "ple",
   "builds": [
     {
-      "src": "./lib/index.js",
-      "use": "@now/node-server"
+      "src": "/",
+      "use": "@now/node-server ./node_modules/.bin/probot run ./lib/index.js"
     }
   ],
   "env": {
