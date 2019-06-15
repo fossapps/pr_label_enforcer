@@ -2,6 +2,12 @@
   "version": 2,
   "name": "pr_label_enforcer",
   "alias": "ple",
+  "builds": [
+    {
+      "src": "./lib/index.js",
+      "use": "@now/node"
+    }
+  ],
   "env": {
     "APP_ID": "32985",
     "CLIENT_SECRET": "@client_secret",
