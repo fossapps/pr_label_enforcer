@@ -4,14 +4,14 @@
   "alias": "ple",
   "builds": [
     {
-      "src": "now.js",
+      "src": "./lib/index.js",
       "use": "@now/node"
     }
   ],
   "routes": [
     {
       "src": "/",
-      "dest": "/now.js"
+      "dest": "./lib/index.js"
     }
   ],
   "env": {
