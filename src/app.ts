@@ -1,6 +1,7 @@
 import * as Webhooks from "@octokit/webhooks";
 import {Application} from "probot";
 import {OnCallback} from "probot/lib/application";
+import {ManifestCreation} from "probot/lib/manifest-creation";
 import {Config} from "./Config";
 import {IGithubConfig, LabelMatcher} from "./LabelMatcher";
 import {CheckStatus, StatusChecksManager} from "./StatusChecksManager";
@@ -43,11 +44,11 @@ const handleStatus: OnCallback<Webhooks.WebhookPayloadPullRequest> = async (cont
     }
 };
 
-const app = (context: Application) => {
+const app = (context: Application, setup: ManifestCreation = new ManifestCreation()) => {
     context.on("pull_request.opened", handleStatus);
     context.on("pull_request.reopened", handleStatus);
     context.on("pull_request.unlabeled", handleStatus);
     context.on("pull_request.labeled", handleStatus);
 };
 
-export {app};
+export = app;
