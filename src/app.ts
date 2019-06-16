@@ -8,7 +8,6 @@ import {CheckStatus, StatusChecksManager} from "./StatusChecksManager";
 const handleStatus: OnCallback<Webhooks.WebhookPayloadPullRequest> = async (context) => {
     try {
         const data: IGithubConfig = await context.config<IGithubConfig>("pr_labels.yml");
-        context.log.info(data);
         if (!data) {
             return;
         }
