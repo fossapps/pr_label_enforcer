@@ -16,8 +16,7 @@
   ],
   "env": {
     "APP_ID": "32985",
-    "APP_NAME": "WIP",
-    "DISABLE_STATS": "true",
+    "APP_NAME": "Pull Request Label Enforcer",
     "LOG_LEVEL": "info",
     "NODE_ENV": "production"
   }
