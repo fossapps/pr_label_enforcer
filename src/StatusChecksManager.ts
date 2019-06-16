@@ -64,7 +64,7 @@ export class StatusChecksManager {
             },
             output: {
                 title: "Labels not setup correctly",
-                summary: "Labels matched as defined on file"
+                summary: "Labels not matched as defined on file"
             }
         };
         return await this.context.github.checks.create(this.context.repo(checkOptions));
