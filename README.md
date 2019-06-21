@@ -1,5 +1,5 @@
 # ts-module-boilerplate
-
+<!--
 [![Greenkeeper badge](https://badges.greenkeeper.io/crazyfactory/ts-module-boilerplate.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/crazyfactory/ts-module-boilerplate.svg)](https://travis-ci.org/crazyfactory/ts-module-boilerplate)
 [![GitHub issues](https://img.shields.io/github/issues/crazyfactory/ts-module-boilerplate.svg)](https://github.com/crazyfactory/ts-module-boilerplate/issues)
@@ -28,3 +28,4 @@ Initially you should:
 - uncomment `after_success` block in `.travis.yml` to activate semantic-release
 
 Afterwards you can start implementing classes and tests :)
+-->
