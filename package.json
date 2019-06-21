@@ -12,7 +12,7 @@
     "enforce labels on pull requests"
   ],
   "author": "Nishchal Gautam <gautam.nishchal@gmail.com>",
-  "license": "ISC",
+  "license": "GPL",
   "repository": {
     "type": "git",
     "url": "git@github.com:fossapps/pr_label_enforcer.git"
