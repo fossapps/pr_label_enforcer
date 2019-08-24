@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "handlebar-templates",
-  "alias": "ht",
+  "name": "pr_label_enforcer",
+  "alias": "ple",
   "builds": [
     {
       "src": "/lib/index.js",
@@ -15,6 +15,8 @@
     }
   ],
   "env": {
+    "APP_ID": "32985",
+    "APP_NAME": "Pull Request Label Enforcer",
     "LOG_LEVEL": "info",
     "NODE_ENV": "production"
   }
