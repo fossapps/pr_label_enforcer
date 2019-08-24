@@ -15,7 +15,7 @@ script:
   - npm run build -s
   - npm run test -s
   - npm run lint -s
-  - docker build . -t fossapps/handlebar-templates
+  - docker build . -t fossapps/pr_label_enforcer
   - npx semantic-release
 
 after_success:
