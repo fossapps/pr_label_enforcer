@@ -3,6 +3,7 @@ export interface IAppConfig {
     id: number;
     cert: string;
     port: number;
+    checkName: string;
 }
 export const getAppConfig = (): IAppConfig => {
     if (!process.env.APP_ID) {
@@ -19,6 +20,7 @@ export const getAppConfig = (): IAppConfig => {
         id,
         port: 3000,
         secret: process.env.WEBHOOK_SECRET,
-        cert: Buffer.from(process.env.PRIVATE_KEY_ENCODED, "base64").toString("ascii")
+        cert: Buffer.from(process.env.PRIVATE_KEY_ENCODED, "base64").toString("ascii"),
+        checkName: process.env.CHECK_NAME ? process.env.CHECK_NAME : "pull_request_label"
     };
 };

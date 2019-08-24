@@ -1,44 +1,46 @@
 import * as Webhooks from "@octokit/webhooks";
 import {Application, Context} from "probot";
-import {GithubIssueHelper, IGithubIssueHelper} from "./GithubIssueHelper";
-import {IPayloadHelper, PayloadHelper} from "./PayloadHelper";
-
-export type TData = Webhooks.WebhookPayloadPullRequest | Webhooks.WebhookPayloadIssues;
+import {getAppConfig} from "./AppConfig";
+import {IGithubConfig, LabelMatcher} from "./LabelMatcher";
+import {CheckStatus, StatusChecksManager} from "./StatusChecksManager";
 
 export class App {
-    constructor(private ghHelper: IGithubIssueHelper, private payloadHelper: IPayloadHelper, private context: Context<TData>) {
-    }
 
     public static handle(context: Application): void {
-        context.on(["pull_request.opened", "issues.opened", "issues.edited", "pull_request.edited"], App.handleEvent);
+        context.on(["pull_request.opened", "pull_request.reopened", "pull_request.labeled", "pull_request.unlabeled"], App.handleEvent);
     }
 
-    private static handleEvent(context: Context<TData>): Promise<void> {
+    private static handleEvent(context: Context<Webhooks.WebhookPayloadPullRequest>): Promise<void> {
         context.log.info(`handling ${context.event} event`);
-        const app = new App(new GithubIssueHelper(context.github, PayloadHelper.isPr(context.payload)), new PayloadHelper(context), context);
-        return app.handleEvent();
+        const app = new App();
+        return app.handleEvent(context);
     }
 
-    private static getErrorComment(error: Error): string {
-        const message = (error.stack) ? error.stack!.split("\n").join("\n>") : error.toString();
-        return `## There was error processing your body
-
-The exact error message is the following
-
-${message}
-
-This body won't be processed any further, please fix your template.
-`;
-    }
-
-    public async handleEvent(): Promise<void> {
-        try {
-            const newBody = this.payloadHelper.getNewBody();
-            await this.ghHelper.updateBody(this.context.issue({body: newBody}));
-            this.context.log.debug(`updated ${PayloadHelper.isPr(this.context.payload) ? "PR" : "issue"} body`);
-        } catch (e) {
-            this.context.log.info(`Error: ${e.toString()}`);
-            await this.ghHelper.comment(this.context.issue({body: App.getErrorComment(e)}));
+    public async handleEvent(context: Context<Webhooks.WebhookPayloadPullRequest>): Promise<void> {
+        const data: IGithubConfig = await context.config<IGithubConfig>("pr_labels.yml");
+        if (!data) {
+            return;
+        }
+        const matcher = new LabelMatcher(context.payload.pull_request.labels);
+        const targetStatus = matcher.matches(data) ? CheckStatus.SUCCESS : data.invalidStatus === "failed" ? CheckStatus.FAILED : CheckStatus.PENDING;
+        const statusChecksManager = new StatusChecksManager(context, getAppConfig().checkName);
+        const status = await statusChecksManager.getCheck();
+        if (targetStatus === status) {
+            return;
+        }
+        switch (targetStatus) {
+            case CheckStatus.PENDING:
+                await statusChecksManager.setPending();
+                break;
+            case CheckStatus.FAILED:
+                await statusChecksManager.setFailed();
+                break;
+            case CheckStatus.SUCCESS:
+                await statusChecksManager.setSuccess();
+                break;
+            default:
+                const errorMessage = `not able to handle ${targetStatus}`;
+                throw new Error(errorMessage);
         }
     }
 }
