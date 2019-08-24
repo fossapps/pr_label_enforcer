@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git@github.com:fossapps/pr_label_enforcer.git"
   },
-  "homepage": "https://cyberhck.serveo.net/",
+  "homepage": "https://github.com/fossapps/pr_label_enforcer",
   "dependencies": {
     "dotenv": "^8.0.0",
     "hbs": "^4.0.4",

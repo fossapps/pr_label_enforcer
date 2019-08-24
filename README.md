@@ -1,11 +1,11 @@
-# Handlebars-Issue-and-Pull-Requests
+# pr_label_enforcer
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fossapps/Handlebars-Issue-and-Pull-Requests.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.com/fossapps/Handlebars-Issue-and-Pull-Requests.svg)](https://travis-ci.com/fossapps/Handlebars-Issue-and-Pull-Requests)
-[![GitHub issues](https://img.shields.io/github/issues/fossapps/Handlebars-Issue-and-Pull-Requests.svg)](https://github.com/fossapps/Handlebars-Issue-and-Pull-Requests/issues)
-[![devDependencies Status](https://david-dm.org/fossapps/Handlebars-Issue-and-Pull-Requests/dev-status.svg)](https://david-dm.org/fossapps/Handlebars-Issue-and-Pull-Requests?type=dev)
-[![dependencies Status](https://david-dm.org/fossapps/Handlebars-Issue-and-Pull-Requests/status.svg)](https://david-dm.org/fossapps/Handlebars-Issue-and-Pull-Requests)
-[![codecov](https://codecov.io/gh/fossapps/Handlebars-Issue-and-Pull-Requests/branch/master/graph/badge.svg)](https://codecov.io/gh/fossapps/Handlebars-Issue-and-Pull-Requests)
+[![Greenkeeper badge](https://badges.greenkeeper.io/fossapps/pr_label_enforcer.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/fossapps/pr_label_enforcer.svg)](https://travis-ci.com/fossapps/pr_label_enforcer)
+[![GitHub issues](https://img.shields.io/github/issues/fossapps/pr_label_enforcer.svg)](https://github.com/fossapps/pr_label_enforcer/issues)
+[![devDependencies Status](https://david-dm.org/fossapps/pr_label_enforcer/dev-status.svg)](https://david-dm.org/fossapps/pr_label_enforcer?type=dev)
+[![dependencies Status](https://david-dm.org/fossapps/pr_label_enforcer/status.svg)](https://david-dm.org/fossapps/pr_label_enforcer)
+[![codecov](https://codecov.io/gh/fossapps/pr_label_enforcer/branch/master/graph/badge.svg)](https://codecov.io/gh/fossapps/pr_label_enforcer)
 
 Github app to run your issue body and pull request's body through handlebar to generate new bodies
 
