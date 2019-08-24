@@ -36,7 +36,7 @@ module.exports = {
     prepare: [
         {
             path: "@semantic-release/exec",
-            cmd: "docker tag fossapps/handlebar-templates:latest fossapps/handlebar-templates:${nextRelease.version}"
+            cmd: "docker tag fossapps/pr-label-enforcer:latest fossapps/pr-label-enforcer:${nextRelease.version}"
         },
         {
             path: "@semantic-release/exec",
@@ -46,11 +46,11 @@ module.exports = {
     publish: [
         {
             path: "@semantic-release/exec",
-            cmd: "docker push fossapps/handlebar-templates"
+            cmd: "docker push fossapps/pr-label-enforcer"
         },
         {
             path: "@semantic-release/exec",
-            cmd: "docker push fossapps/handlebar-templates:${nextRelease.version}"
+            cmd: "docker push fossapps/pr-label-enforcer:${nextRelease.version}"
         },
         {
             path: "@semantic-release/exec",
