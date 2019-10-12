@@ -19,7 +19,7 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "hbs": "^4.0.4",
-    "probot": "^9.2.19"
+    "probot": "^9.5.3"
   },
   "devDependencies": {
     "@octokit/webhooks": "^6.2.2",
