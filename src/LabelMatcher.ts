@@ -1,7 +1,8 @@
 export interface IGithubConfig {
     version: string;
     invalidStatus: "failed" | "pending";
-    labelRule: ILabelEndsWithRule | ILabelStartsWithRule | ILabelEqualsRule | {};
+    labelRule: ILabelEndsWithRule | ILabelStartsWithRule | ILabelEqualsRule |
+               ILabelDoesntEndWithRule | ILabelDoesntStartWithRule | ILabelNotRule | {};
 }
 
 export interface IGithubLabel {
@@ -25,6 +26,18 @@ export interface ILabelStartsWithRule {
     startsWith: string[];
 }
 
+export interface ILabelNotRule {
+    not: string[];
+}
+
+export interface ILabelDoesntStartWithRule {
+    doesntStartWith: string[];
+}
+
+export interface ILabelDoesntEndWithRule {
+    doesntEndWith: string[];
+}
+
 export class LabelMatcher {
     constructor(private labels: IGithubLabel[]) {}
 
@@ -44,6 +57,22 @@ export class LabelMatcher {
         });
     }
 
+    public not(config: ILabelNotRule): boolean {
+        return !this.labels.some((x) => config.not.includes(x.name));
+    }
+
+    public doesntStartWith(config: ILabelDoesntStartWithRule): boolean {
+        return !this.labels.some((x) => {
+            return config.doesntStartWith.some((ruleLabel) => x.name.startsWith(ruleLabel));
+        });
+    }
+
+    public doesntEndWith(config: ILabelDoesntEndWithRule): boolean {
+        return !this.labels.some((x) => {
+            return config.doesntEndWith.some((ruleLabel) => x.name.endsWith(ruleLabel));
+        });
+    }
+
     public matches(config: IGithubConfig): boolean {
         return Object.keys(config.labelRule).every((x) => {
             switch (x) {
@@ -53,6 +82,12 @@ export class LabelMatcher {
                     return this.startsWith(config.labelRule as ILabelStartsWithRule);
                 case "values":
                     return this.contains(config.labelRule as ILabelEqualsRule);
+                case "not":
+                    return this.not(config.labelRule as ILabelNotRule);
+                case "doesntStartWith":
+                    return this.doesntStartWith(config.labelRule as ILabelDoesntStartWithRule);
+                case "doesntEndWith":
+                    return this.doesntEndWith(config.labelRule as ILabelDoesntEndWithRule);
                 default:
                     throw new Error(`rule ${x} not supported`);
             }
