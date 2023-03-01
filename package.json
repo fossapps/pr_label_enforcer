@@ -18,7 +18,7 @@
   "homepage": "https://github.com/fossapps/pr_label_enforcer",
   "dependencies": {
     "dotenv": "^8.0.0",
-    "hbs": "^4.0.4",
+    "hbs": "^4.2.0",
     "probot": "^9.2.19"
   },
   "devDependencies": {
